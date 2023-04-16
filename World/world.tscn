@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct174alhyp6yi"]
+
+[ext_resource type="Script" path="res://World/world.gd" id="1_uq48e"]
+[ext_resource type="PackedScene" uid="uid://sdrltvete0nw" path="res://Tower/tower.tscn" id="2_lnm7d"]
+[ext_resource type="Texture2D" uid="uid://cgmj0ttvad4n6" path="res://Art/grass.png" id="2_mfn6u"]
+[ext_resource type="Texture2D" uid="uid://dvxqo021jio8a" path="res://Art/path.png" id="3_h7kgt"]
+[ext_resource type="PackedScene" uid="uid://d1whl08b8ue3u" path="res://World/mirror_image.tscn" id="5_gtoqa"]
+[ext_resource type="Script" path="res://World/UI.gd" id="5_hwven"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r4jyd"]
+texture = ExtResource("3_h7kgt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5l340"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_r4jyd")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_26pkx"]
+radius = 30.0
+height = 100.0
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_uq48e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_right = 4624.0
+offset_bottom = 2600.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+texture = ExtResource("2_mfn6u")
+stretch_mode = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5l340")
+format = 2
+layer_0/tile_data = PackedInt32Array(852003, 0, 0, 852002, 0, 0, 852001, 0, 0, 852000, 0, 0, 851999, 0, 0, 851998, 0, 0, 851997, 0, 0, 786461, 0, 0, 720925, 0, 0, 655389, 0, 0, 589853, 0, 0, 524317, 0, 0, 458781, 0, 0, 458780, 0, 0, 458779, 0, 0, 458778, 0, 0, 458777, 0, 0, 458776, 0, 0, 458775, 0, 0, 458774, 0, 0, 458773, 0, 0, 458772, 0, 0, 524308, 0, 0, 524307, 0, 0, 524306, 0, 0, 589842, 0, 0, 589841, 0, 0, 655377, 0, 0, 655376, 0, 0, 655375, 0, 0, 655374, 0, 0, 655373, 0, 0, 720909, 0, 0, 720908, 0, 0, 720907, 0, 0, 720906, 0, 0, 720905, 0, 0, 720904, 0, 0, 720903, 0, 0, 786439, 0, 0, 786438, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 655378, 0, 0, 655379, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 524315, 0, 0, 524314, 0, 0, 524316, 0, 0, 589852, 0, 0, 655388, 0, 0, 655387, 0, 0, 720923, 0, 0, 720924, 0, 0, 786460, 0, 0, 851996, 0, 0, 917532, 0, 0, 917533, 0, 0, 917534, 0, 0, 917535, 0, 0, 917536, 0, 0, 917537, 0, 0, 917538, 0, 0, 917539, 0, 0, 786467, 0, 0, 786466, 0, 0, 786465, 0, 0, 786464, 0, 0, 786463, 0, 0, 786462, 0, 0, 720926, 0, 0, 655390, 0, 0, 589854, 0, 0, 524318, 0, 0, 458782, 0, 0, 393246, 0, 0, 393245, 0, 0, 393244, 0, 0, 393243, 0, 0, 393242, 0, 0, 393241, 0, 0, 393240, 0, 0, 327704, 0, 0, 327703, 0, 0, 327702, 0, 0, 327701, 0, 0, 327700, 0, 0, 393235, 0, 0, 458770, 0, 0, 524305, 0, 0, 524304, 0, 0, 589840, 0, 0, 458771, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 589839, 0, 0, 655372, 0, 0, 655371, 0, 0, 655367, 0, 0, 655366, 0, 0, 720902, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0)
+
+[node name="Tower" parent="." instance=ExtResource("2_lnm7d")]
+position = Vector2(134, 260)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(1143, 435)
+
+[node name="Marker2D1" type="Marker2D" parent="Node2D"]
+position = Vector2(930, 436)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D"]
+position = Vector2(930, 228)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D"]
+position = Vector2(717, 228)
+
+[node name="Marker2D4" type="Marker2D" parent="Node2D"]
+position = Vector2(534, 315)
+
+[node name="Marker2D5" type="Marker2D" parent="Node2D"]
+position = Vector2(140, 386)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 530.0
+offset_right = 1158.0
+offset_bottom = 651.0
+mouse_filter = 2
+color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("5_hwven")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 536.0
+offset_right = 1165.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="Regular" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("5_gtoqa")]
+modulate = Color(1, 0, 0.0901961, 1)
+position = Vector2(50, 60)
+
+[node name="Regular" type="TouchScreenButton" parent="CanvasLayer/UI/HBoxContainer/Regular"]
+shape = SubResource("CapsuleShape2D_26pkx")
+
+[node name="Duplicator" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("5_gtoqa")]
+modulate = Color(1, 0.239216, 1, 1)
+position = Vector2(150, 60)
+
+[node name="Duplicator" type="TouchScreenButton" parent="CanvasLayer/UI/HBoxContainer/Duplicator"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_26pkx")
+
+[node name="Multiplicator" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("5_gtoqa")]
+position = Vector2(250, 60)
+
+[node name="Multiplicator" type="TouchScreenButton" parent="CanvasLayer/UI/HBoxContainer/Multiplicator"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_26pkx")
+
+[node name="Nullificator" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("5_gtoqa")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(350, 60)
+
+[node name="Nullificator" type="TouchScreenButton" parent="CanvasLayer/UI/HBoxContainer/Nullificator"]
+shape = SubResource("CapsuleShape2D_26pkx")
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/UI"]
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/Regular/Regular" to="CanvasLayer/UI" method="_on_regular_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/Duplicator/Duplicator" to="CanvasLayer/UI" method="_on_duplicator_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/Multiplicator/Multiplicator" to="CanvasLayer/UI" method="_on_multiplicator_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/Nullificator/Nullificator" to="CanvasLayer/UI" method="_on_nullificator_pressed"]

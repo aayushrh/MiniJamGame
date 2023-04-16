@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://by01cigrs50gt"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_ou61l"]
+[ext_resource type="Texture2D" uid="uid://cwqwod121j0rg" path="res://Art/bullet7.png" id="2_q5sto"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybsfm"]
+radius = 21.2132
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rful"]
+radius = 27.6586
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi0fk"]
+atlas = ExtResource("2_q5sto")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddqnh"]
+atlas = ExtResource("2_q5sto")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ma3b"]
+atlas = ExtResource("2_q5sto")
+region = Rect2(128, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n27rd"]
+atlas = ExtResource("2_q5sto")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yovrs"]
+atlas = ExtResource("2_q5sto")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtqiu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi0fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddqnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ma3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n27rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yovrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_ou61l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ybsfm")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_0rful")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jtqiu")
+frame_progress = 0.550249

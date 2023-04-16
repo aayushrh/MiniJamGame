@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://p4tc17xy8k2j"]
+
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_a0q5w"]
+[ext_resource type="Texture2D" uid="uid://d051ame5ybkbb" path="res://Art/enemy5.png" id="2_gn2b7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yj3fu"]
+radius = 39.1152
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3wuh"]
+radius = 59.0336
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsbsl"]
+atlas = ExtResource("2_gn2b7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t0us"]
+atlas = ExtResource("2_gn2b7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgv4y"]
+atlas = ExtResource("2_gn2b7")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aof2v"]
+atlas = ExtResource("2_gn2b7")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixfmo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsbsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t0us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgv4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aof2v")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_a0q5w")
+ACCELERATION = 10
+MAX_SPEED = 16
+
+[node name="Hurtbox" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_yj3fu")
+
+[node name="Hitbox" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_c3wuh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_ixfmo")
+animation = &"Run"
+frame_progress = 0.443846
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

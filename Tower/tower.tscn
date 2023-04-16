@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://sdrltvete0nw"]
+
+[ext_resource type="Script" path="res://Tower/tower.gd" id="1_1vecb"]
+[ext_resource type="Texture2D" uid="uid://cr7rwvn0ml8ox" path="res://Art/tower.png" id="2_ojtrk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_llg8y"]
+radius = 79.511
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bjl4"]
+atlas = ExtResource("2_ojtrk")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2fh1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bjl4")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_1vecb")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-3, 115)
+shape = SubResource("CircleShape2D_llg8y")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.00001, 82)
+scale = Vector2(1.67188, 1.94531)
+sprite_frames = SubResource("SpriteFrames_w2fh1")
+animation = &"new_animation"
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

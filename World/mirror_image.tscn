@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1whl08b8ue3u"]
+
+[ext_resource type="Texture2D" uid="uid://di1r8b5orc0sw" path="res://Art/mirror.png" id="1_hp7fe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y851"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liyqx"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpw3t"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5srxo"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6uo5"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v5xj"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83lmg"]
+atlas = ExtResource("1_hp7fe")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6h21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y851")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liyqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpw3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5srxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6uo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v5xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83lmg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MirrorImage" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_f6h21")
+animation = &"Idle"
