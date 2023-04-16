@@ -13,6 +13,11 @@ func _physics_process(delta):
 			queue_free()
 		#velocity = velocity.bounce(collision_info.get_normal())
 		var coll = collision_info.get_collider()
+		if(coll.type == "dupe"):
+			match(coll.level):
+				1:
+					pass
+					#level1
 		var h = abs(coll.end.y - coll.start.y)
 		var w = abs(coll.end.x - coll.start.x)
 		var speed = sqrt(velocity.x * velocity.x + velocity.y * velocity.y)

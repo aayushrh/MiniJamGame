@@ -3,6 +3,7 @@ extends StaticBody2D
 var start = Vector2.ZERO
 var end = Vector2.ZERO
 var type = "Regular"
+var level = 1
 
 var selected = false
 
@@ -16,6 +17,8 @@ func initialize():
 	queue_redraw()
 
 func _process(delta):
+	if(selected and Input.is_action_just_pressed("upgrade")):
+		level += 1
 	queue_redraw()
 
 func _draw():
